@@ -5,6 +5,7 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import exp from "constants";
+import dashboardRoutes from './routes/dashboardRoutes'
 /* ROUTES IMPORTS */
 
 /* configuraciones */
@@ -19,9 +20,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
 //? Routes
-app.get("/hello", (req, res) => {
-  res.send("hello world");
-});
+app.use('/dashboard', dashboardRoutes)
+
+
 //? server
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
